@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Liste des fichiers et dossiers sur GitHub</title>
+  <title>Sanctuary VR Files and Folders</title>
 </head>
 <body>
-  <h1>Liste des fichiers et dossiers sur GitHub</h1>
+  <h1>Sanctuary VR Files and Folders</h1>
   <ul>
-    {% for repo in repos %}
-      <li>{{ repo.name }} ({{ repo.description }})</li>
-      {% for file in repo.files %}
-        <ul>
-          <li>{{ file.name }} ({{ file.size }})</li>
-        </ul>
-      {% endfor %}
-    {% endfor %}
+    <li><b>Folders:</b></li>
+    <ul>
+      <li>Posters</li>
+    </ul>
+    <li><b>Files:</b></li>
+    <ul>
+      <li>index.html</li>
+    </ul>
   </ul>
 </body>
 </html>
