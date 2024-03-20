@@ -1,85 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Accueil</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f0f0f0;
-		}
-		
-		.dossier {
-			background-color: #fff;
-			padding: 10px;
-			border: 1px solid #ccc;
-			margin: 10px 0;
-		}
-		
-		.dossier:hover {
-			background-color: #ccc;
-		}
-		
-		.image {
-			max-width: 100px;
-			height: auto;
-			margin: 10px;
-		}
-		
-		.tooltip {
-			position: absolute;
-			background-color: #fff;
-			padding: 10px;
-			border: 1px solid #ccc;
-			z-index: 1;
-		}
-		
-		.tooltip img {
-			max-width: 100%;
-			height: auto;
-		}
-	</style>
+  <title>Liste des fichiers et dossiers sur GitHub</title>
 </head>
 <body>
-	<div class="dossier">
-		<h1>Dossier 1</h1>
-		<img src="image1.jpg" class="image" />
-		<img src="image2.jpg" class="image" />
-		<img src="image3.jpg" class="image" />
-	</div>
-	<div class="dossier">
-		<h1>Dossier 2</h1>
-		<img src="image4.jpg" class="image" />
-		<img src="image5.jpg" class="image" />
-		<img src="image6.jpg" class="image" />
-	</div>
-	
-	<!-- Ajoutez des dossiers et des images comme cela -->
-	
-	<script>
-		function afficherTooltip(event) {
-			event = event || window.event;
-			var element = event.target || event.srcElement;
-			var tooltip = element.title;
-			if (tooltip) {
-				var x = event.clientX + 10;
-				var y = event.clientY + 10;
-				$('.tooltip').remove();
-				$('<div class="tooltip">' + tooltip + '</div>').css({
-					top: y,
-					left: x
-				}).appendTo('body').fadeIn('fast');
-			}
-		}
-		
-		function fermerTooltip() {
-			$('.tooltip').remove();
-		}
-		
-		$('.image').hover(function() {
-			afficherTooltip(event);
-		}, function() {
-			fermerTooltip();
-		});
-	</script>
+  <h1>Liste des fichiers et dossiers sur GitHub</h1>
+  <ul>
+    {% for repo in repos %}
+      <li>{{ repo.name }} ({{ repo.description }})</li>
+      {% for file in repo.files %}
+        <ul>
+          <li>{{ file.name }} ({{ file.size }})</li>
+        </ul>
+      {% endfor %}
+    {% endfor %}
+  </ul>
 </body>
 </html>
